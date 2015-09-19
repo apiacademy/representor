@@ -1,6 +1,6 @@
 {
   "name": "representor-serializer",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Node.js implementation of a serializer for major Hypermedia Formats, in the context of Representor Pattern.",
   "main": "representor.js",
   "repository": {
@@ -47,7 +47,6 @@
     "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/ test/acceptance/"
   },
   "dependencies": {
-    "glob": "^5.0.14",
     "uritemplate": "^0.3.4"
   }
 }
