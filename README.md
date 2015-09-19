@@ -24,10 +24,10 @@ var uber = repserializer(internal_representation, 'application/vnd.uber+json');
 
 ## Currently Implemented Hypermedia Formats
 
-- HAL application/vnd.hal+json
-- SIREN application/vnd.siren+json
-- Collection JSON application/vnd.collection+json
-- UBER application/vnd.uber+json
+- HAL: `application/vnd.hal+json`
+- SIREN: `application/vnd.siren+json`
+- Collection+JSON: `application/vnd.collection+json`
+- UBER: `application/vnd.uber+json`
 
 ## How to add a new serializer
 
