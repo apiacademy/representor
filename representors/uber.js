@@ -30,7 +30,7 @@ function uber(object) {
   var rootData       = [];
   
   output.uber = {};
-  object      = object.todo; // removing extra layer
+  object      = object[Object.keys(object)[0]]; // removing extra layer regardless of what it's called.
   
   rootData = parseTitle(rootData, object);
 
