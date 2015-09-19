@@ -1,7 +1,7 @@
 {
   "name": "representor-serializer",
   "version": "0.1.0",
-  "description": "Representor pattern implementation for major hypermedia formats",
+  "description": "Node.js implementation of a serializer for major Hypermedia Formats, in the context of Representor Pattern.",
   "main": "representor.js",
   "repository": {
     "type": "git",

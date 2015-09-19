@@ -1,5 +1,5 @@
 # representor
-Node.js implementation of a serialier for the Representor Pattern, for major Hypermedia Formats
+Node.js implementation of a serializer for major Hypermedia Formats, in the context of Representor Pattern.
 
 ## Installation
 
