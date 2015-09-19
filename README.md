@@ -1,4 +1,9 @@
-# representor
+# Representor (Serializer)
+
+![MIT License](https://img.shields.io/npm/l/uberclient.svg?style=flat)
+[![Build Status](https://travis-ci.org/apiacademy/representor.svg?branch=master)](https://travis-ci.org/apiacademy/representor)
+
+
 Node.js implementation of a serializer for major Hypermedia Formats, in the context of Representor Pattern.
 
 ## Installation
