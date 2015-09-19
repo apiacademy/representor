@@ -24,15 +24,13 @@ module.exports = uber;
 // var urit = require('uritemplate');
 
 // emit valid siren body
-function uber(object, root) {
+function uber(object) {
   
   var output         = {};
   var rootData       = [];
   
   output.uber = {};
   object      = object.todo; // removing extra layer
-  
-  root = root.replace(/^\/\//,"http://");
   
   rootData = parseTitle(rootData, object);
 
@@ -123,7 +121,7 @@ function parseActions(rootData, obj) {
 **/ 
 function parseLink (uber, json) {
   uber.rel   = json.rel;
-  uber.href  = json.href;
+  uber.url  = json.href;
   uber.label = json.prompt;
   uber.name  = json.name;
   
@@ -157,7 +155,10 @@ function parseLink (uber, json) {
  * 
  * */
 function parseForm (uber, json) {
-  uber.name = json.name;
+  uber.name  = json.name || "";
+  uber.url   = json.href || "";
+  uber.rel   = json.rel || [];
+  uber.label = json.prompt || "";
   
   if (json.type === "safe") {
     uber.action = "read";

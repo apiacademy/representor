@@ -1,0 +1,131 @@
+{
+  "todo": {
+    "title": "ToDo",
+    "actions": [
+      {
+        "name": "selfLink",
+        "type": "safe",
+        "kind": "self",
+        "target": "self",
+        "prompt": "Reload",
+        "href": "//hyper-hackery.herokuapp.com/",
+        "rel": [
+          "self"
+        ]
+      },
+      {
+        "name": "listAll",
+        "type": "safe",
+        "kind": "todo",
+        "target": "list",
+        "prompt": "All ToDo",
+        "href": "//hyper-hackery.herokuapp.com/all-to-do",
+        "rel": [
+          "collection"
+        ]
+      },
+      {
+        "name": "listActive",
+        "type": "safe",
+        "kind": "todo",
+        "target": "list",
+        "prompt": "Active ToDos",
+        "inputs": [
+          {
+            "name": "completed",
+            "prompt": "Complete",
+            "value": "false"
+          }
+        ],
+        "href": "//hyper-hackery.herokuapp.com/active-todos",
+        "rel": [
+          "active",
+          "collection"
+        ]
+      },
+      {
+        "name": "listCompleted",
+        "type": "safe",
+        "kind": "todo",
+        "target": "list",
+        "prompt": "Completed ToDos",
+        "inputs": [
+          {
+            "name": "completed",
+            "prompt": "Complete",
+            "value": "true"
+          }
+        ],
+        "href": "//hyper-hackery.herokuapp.com/",
+        "rel": [
+          "completed",
+          "collection"
+        ]
+      },
+      {
+        "name": "addForm",
+        "type": "unsafe",
+        "kind": "todo",
+        "target": "list",
+        "prompt": "Add ToDo",
+        "inputs": [
+          {
+            "name": "title",
+            "prompt": "Title"
+          },
+          {
+            "name": "completed",
+            "prompt": "Complete",
+            "value": "false"
+          }
+        ],
+        "href": "//hyper-hackery.herokuapp.com/",
+        "rel": [
+          "create-form"
+        ]
+      },
+      {
+        "name": "searchForm",
+        "type": "safe",
+        "kind": "todo",
+        "target": "list",
+        "prompt": "Search ToDos",
+        "inputs": [
+          {
+            "name": "title",
+            "prompt": "Title",
+            "value": ""
+          }
+        ],
+        "href": "//hyper-hackery.herokuapp.com/",
+        "rel": [
+          "search"
+        ]
+      }
+    ],
+    "data": [
+      {
+        "meta": {
+          "rel": [
+            "item"
+          ],
+          "href": "//hyper-hackery.herokuapp.com/1b361exznny"
+        },
+        "id": "1b361exznny",
+        "title": "one more test again",
+        "completed": "true"
+      },
+      {
+        "meta": {
+          "rel": [
+            "item"
+          ],
+          "href": "//hyper-hackery.herokuapp.com/1bgjgezcjwb"
+        },
+        "id": "1bgjgezcjwb",
+        "title": "danny boy",
+        "completed": "false"
+      }
+    ]
+  }
+}

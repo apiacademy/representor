@@ -14,7 +14,7 @@
 
 module.exports = processDoc;
 
-function processDoc(object, mimeType) {
+function processDoc(object, mimeType, root) {
   var doc;
   
   if (!mimeType) {
@@ -37,7 +37,7 @@ function processDoc(object, mimeType) {
       break;
     case "application/vnd.hal+json":
       var haljson = require('./representors/haljson.js');
-      doc = haljson(object);
+      doc = haljson(object, root);
       break;
     case "application/vnd.siren+json":
       var siren = require('./representors/siren.js');
