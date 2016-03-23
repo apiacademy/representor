@@ -1,6 +1,6 @@
 {
   "name": "representor-serializer",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Node.js implementation of a serializer for major Hypermedia Formats, in the context of Representor Pattern.",
   "main": "representor.js",
   "repository": {
@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "glob": "^7.0.3",
+    "lodash": "^4.6.1",
     "uritemplate": "^0.3.4"
   }
 }
