@@ -1,6 +1,9 @@
 {
   "name": "representor-serializer",
   "version": "1.0.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "description": "Node.js implementation of a serializer for major Hypermedia Formats, in the context of Representor Pattern.",
   "main": "representor.js",
   "repository": {
