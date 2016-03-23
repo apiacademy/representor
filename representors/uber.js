@@ -5,19 +5,21 @@
  *******************************************************/
 
 /**
- * 
+ *
   REFERENCE:
     http://uberhypermedia.org
 
   DEPENDS:
-    - 
+    -
 
   HACKS:
-    - 
+    -
 
   ISSUES:
-    - 
+    -
 */
+
+var _ = require('lodash');
 
 module.exports = uber;
 
@@ -25,20 +27,20 @@ module.exports = uber;
 
 // emit valid siren body
 function uber(object) {
-  
+
   var output         = {};
   var rootData       = [];
-  
+
   output.uber = {};
   object      = object[Object.keys(object)[0]]; // removing extra layer regardless of what it's called.
-  
+
   rootData = parseTitle(rootData, object);
 
   output.uber.version = "1.0";
   output.uber.data = rootData;
-  
+
   var o;
-  
+
   for(o in object.data) {
     rootData = parseDataValue(rootData, object.data[o]);
   }
@@ -46,7 +48,7 @@ function uber(object) {
   for(o in object.actions) {
     rootData = parseActions(rootData, object.actions[o]);
   }
-  
+
   return JSON.stringify(output, null, 2);
 }
 
@@ -55,9 +57,9 @@ function parseTitle(rootData, object) {
     var newElement = {};
     newElement.name = newElement.id = "title";
     newElement.value = object.title;
-    rootData[rootData.length] = newElement; 
+    rootData[rootData.length] = newElement;
   }
-  
+
   return rootData;
 }
 
@@ -69,40 +71,44 @@ function parseTitle(rootData, object) {
     completed: 'true' }
 */
 function parseDataValue(rootData, obj) {
-  
-  var newElement = {};
-  newElement.rel = obj.meta.rel;
-  newElement.id  = obj.id;
-  newElement.url = obj.meta.href;
-  newElement.title = obj.title;
-  newElement.data = [];
-  
-  // parse all free-form value objects  
+
+  var newElement   = {};
+  newElement.rel   = _.get(obj, 'meta.rel', null);
+    if (!newElement.rel) { delete newElement.rel; }
+  newElement.id    = _.get(obj, 'id', null);
+    if (!newElement.id)  { delete newElement.id; }
+  newElement.url   = _.get(obj, 'meta.href', "");
+    if (!newElement.url) { delete newElement.url; }
+  newElement.title = _.get(obj, 'title', "");
+    if (!newElement.title) { delete newElement.title; }
+  newElement.data  = [];
+
+  // parse all free-form value objects
   var knownProps = ["meta", "href", "id", "title", "meta", "prompt", "kind", "rel", "inputs", "name", "type"];  
-  
+
   newElement = parseUnknownProperties(newElement, obj, knownProps);
-  
+
   rootData[rootData.length] = newElement;
-  
+
   return rootData;
 }
 
 // handle actions which can be links or forms
 function parseActions(rootData, obj) {
-  
+
   var newElement = {};
-  
+
   if(typeof obj.inputs === "undefined" || obj.inputs.length===0) {
     newElement = parseLink(newElement, obj);
   } else {
     newElement = parseForm(newElement, obj);
   }
-  
-  // parse all free-form value objects  
+
+  // parse all free-form value objects
   var knownProps = ["meta", "href", "id", "title", "meta", "prompt", "kind", "rel", "inputs", "name", "type"];  
   newElement = parseUnknownProperties(newElement, obj, knownProps);
-  
-  rootData[rootData.length] = newElement;  
+
+  rootData[rootData.length] = newElement;
   return rootData;
 }
 
@@ -118,18 +124,18 @@ function parseActions(rootData, obj) {
         "self"
       ]
     }
-**/ 
+**/
 function parseLink (uber, json) {
   uber.rel   = json.rel;
   uber.url  = json.href;
   uber.label = json.prompt;
   uber.name  = json.name;
-  
+
   return uber;
 }
 
 /**
- * 
+ *
  * {
   "name": "addForm",
   "type": "unsafe",
@@ -152,23 +158,23 @@ function parseLink (uber, json) {
     "create-form"
   ]
 }
- * 
+ *
  * */
 function parseForm (uber, json) {
   uber.name  = json.name || "";
   uber.url   = json.href || "";
   uber.rel   = json.rel || [];
   uber.label = json.prompt || "";
-  
+
   if (json.type === "safe") {
     uber.action = "read";
   } else {
     uber.action = "append";
   }
   uber.label = json.prompt;
-  
+
   if (!uber.data) { uber.data = []; }
-  
+
   var modelMembers = [], currPos;
   for(var key in json.inputs) {
     //console.dir(json.inputs[key]);
@@ -186,9 +192,9 @@ function parseForm (uber, json) {
       uber.data[currPos].value = json.inputs[key].value;
     }
   }
-  
+
   uber.model = "{" + modelMembers.join(",") + "}";
-  
+
   return uber;
 }
 
@@ -199,17 +205,16 @@ function parseUnknownProperties(obj, objToParse, knownProps) {
 
   if (!obj.data) { obj.data = []; }
 
-  for(var o in objToParse) {    
+  for(var o in objToParse) {
     if (knownProps.indexOf(o) === -1) {
       var tempObj = {};
       tempObj.name = o;
       tempObj.value = objToParse[o];
       obj.data[obj.data.length] = tempObj;
-    }     
+    }
   }
 
   return obj;
 }
-
 
 // EOF

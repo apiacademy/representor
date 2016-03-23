@@ -5,10 +5,10 @@ var fh     = require("./support/fixture-helper.js");
 
 describe('uber plugin tests: ', function() {
 
-  var repserializer = require('../representor.js'); 
+  var repserializer = require('../representor.js');
   var internalString = fh.loadFixture("internal-representation.json");
   var internalObj = JSON.parse(internalString);
-  
+
   var uberStr = repserializer(internalObj, 'application/vnd.uber+json');
   var uber    = JSON.parse(uberStr);
 
@@ -52,3 +52,20 @@ model: '{completed}' }
   });
 
 });
+
+describe('uber plugin tests (minimal): ', function() {
+
+  var repserializer = require('../representor.js');
+  var internalString = fh.loadFixture("internal-representation-min.json");
+  var internalObj = JSON.parse(internalString);
+
+  var uberStr = repserializer(internalObj, 'application/vnd.uber+json');
+  var uber    = JSON.parse(uberStr);
+
+  it('data entity was parsed properly', function() {
+    expect(uber.uber.data[0].id).to.equal("1b361exznny");
+    expect(uber.uber.data[0].title).to.equal("minimal test");
+  });
+
+});
+
