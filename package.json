@@ -27,15 +27,14 @@
   "homepage": "https://github.com/apiacademy/representor#readme",
   "devDependencies": {
     "chai": "^3.2.0",
-    "mocha": "~2.3.2",    
+    "mocha": "^2.4.5",
     "commander": "",
     "coveralls": "^2.11.2",
-    "glob": "",
-    "istanbul": "~0.3.20",
-    "jshint": "~2.5.x",
-    "mocha-lcov-reporter": "~0.0.2",
-    "nock": "^0.48.0",
-    "should": "~4.0.4",
+    "istanbul": "^0.4.2",
+    "jshint": "^2.9.1",
+    "mocha-lcov-reporter": "^1.2.0",
+    "nock": "^7.5",
+    "should": "^8.2.2",
     "config": "*",
     "yaml": "*"
   },
@@ -47,6 +46,7 @@
     "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require test/support/env --reporter spec --check-leaks test/ test/acceptance/"
   },
   "dependencies": {
+    "glob": "^7.0.3",
     "uritemplate": "^0.3.4"
   }
 }
