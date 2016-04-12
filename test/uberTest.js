@@ -69,3 +69,23 @@ describe('uber plugin tests (minimal): ', function() {
 
 });
 
+describe('uber plugin tests (nested): ', function() {
+
+  var repserializer = require('../representor.js');
+  var internalString = fh.loadFixture("internal-representation-nested.json");
+  var internalObj = JSON.parse(internalString);
+
+  var uberStr = repserializer(internalObj, 'application/vnd.uber+json');
+  var uber    = JSON.parse(uberStr);
+
+   var util = require('util');
+   console.log(util.inspect(uber, false, null));
+
+  it('data entity was parsed properly', function() {
+    expect(uber.uber.data[0].data[1].name).to.equal("somelist");
+    expect(uber.uber.data[0].data[1].data[0].name).to.equal("uuid");
+    // expect(uber.uber.data[0].title).to.equal("minimal test");
+  });
+
+});
+

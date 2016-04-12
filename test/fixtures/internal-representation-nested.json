@@ -1,0 +1,15 @@
+{
+  "todo": {
+    "data": [
+      {
+        "id": "1b361exznny",
+        "title": "minimal test",
+        "somescalar" : "valueparsed",
+        "somelist" : [
+           { "uuid" : "lala", "lorem" : "ipsum" },
+           { "uuid" : "dada", "dolor" : "sit" }
+        ]
+      }
+    ]
+  }
+}
