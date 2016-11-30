@@ -1,6 +1,7 @@
 # Representor (Serializer)
 
 ![MIT License](https://img.shields.io/npm/l/uberclient.svg?style=flat)
+![CI Tests Status](https://circleci.com/gh/apiacademy/representor.svg?style=shield&circle-token=:circle-token)
 [![Build Status](https://travis-ci.org/apiacademy/representor.svg?branch=master)](https://travis-ci.org/apiacademy/representor)
 [![NPM Version](https://img.shields.io/npm/v/representor-serializer.svg)](https://www.npmjs.org/package/representor-serializer) &nbsp;
 
