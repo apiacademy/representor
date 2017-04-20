@@ -8,4 +8,4 @@ WORKDIR /opt/application
 RUN rm -rf node_modules \ 
  && npm install
 
-CMD ["npm", "test"]
+#CMD ["npm", "test"]

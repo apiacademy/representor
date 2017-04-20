@@ -5,3 +5,4 @@ services:
     container_name: representordockertest
     build:
       context: .
+    command: "npm test"
