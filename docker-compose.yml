@@ -1,6 +1,5 @@
-api: 
+representordockertest: 
   build: .
-  container_name: representordockertest
   command: "npm test"
   environment: 
     - NODE_ENV=test
