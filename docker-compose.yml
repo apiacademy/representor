@@ -6,3 +6,5 @@ services:
     build:
       context: .
     command: "npm test"
+    environment: 
+      - NODE_ENV=test
