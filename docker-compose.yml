@@ -1,4 +1,7 @@
-version: '2'
+version: "3"
+
 services:
   representordockertest:
-    build: .
+    container_name: representordockertest
+    build:
+      context: .
