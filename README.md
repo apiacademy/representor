@@ -23,11 +23,12 @@ var uber = repserializer(internal_representation, 'application/vnd.uber+json');
 
 ```
 
-Included tests showcase examples of internal representation: https://github.com/apiacademy/representor/tree/master/test/fixtures
+Included tests showcase examples of internal representation: 
+https://github.com/apiacademy/representor/tree/master/test/fixtures
 
 ## Currently Implemented Hypermedia Formats
 
-- HAL: `application/vnd.hal+json`
+- HAL: `application/hal+json` (and `application/vnd.hal+json` for backwards-compatibility).
 - SIREN: `application/vnd.siren+json`
 - Collection+JSON: `application/vnd.collection+json`
 - UBER: `application/vnd.uber+json`

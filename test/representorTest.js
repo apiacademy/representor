@@ -9,13 +9,13 @@ describe('representor interface tests: ', function() {
 
   it('rejects if mime type is missing', function() {
     var fakeJSON = {};
-    expect(repserializer.bind(repserializer, fakeJSON)).to.throw('Cannot serialize to an unspecified mime type.');
+    expect(repserializer.bind(repserializer, fakeJSON)).to.throw('No destination mime type provided to Representor.');
   });
 
 
   it('rejects unsupported mime types', function() {
     var fakeJSON = {};
-    expect(repserializer.bind(repserializer, fakeJSON, 'app/nonexistant+json')).to.throw('Cannot serialize to an unsupported mime type: ');
+    expect(repserializer.bind(repserializer, fakeJSON, 'app/nonexistant+json')).to.throw('Representor cannot serialize to an unsupported mime type: ');
   });
 
 });

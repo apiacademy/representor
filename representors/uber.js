@@ -21,12 +21,10 @@
 
 var _ = require('lodash');
 
-module.exports = uber;
-
 // var urit = require('uritemplate');
 
 // emit valid siren body
-function uber(object) {
+var uber = function(object) {
 
   var output         = {};
   var rootData       = [];
@@ -50,7 +48,7 @@ function uber(object) {
   }
 
   return JSON.stringify(output, null, 2);
-}
+};
 
 function parseTitle(rootData, object) {
   if (object.title && object.title.length > 0) {
@@ -217,4 +215,10 @@ function parseUnknownProperties(obj, objToParse, knownProps) {
   return obj;
 }
 
+// doesn't require root element unlike uber() which does, for backwards-compat
+uber.convert = function(object) {
+  object.root = object;
+  return uber(object);
+};
+module.exports = uber;
 // EOF

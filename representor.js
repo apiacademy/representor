@@ -17,8 +17,12 @@ module.exports = processDoc;
 function processDoc(object, mimeType, root) {
   var doc;
   
+  if (typeof root === 'undefined' || !root) {
+    root = 'http://';
+  }
+
   if (!mimeType) {
-    throw new Error('Cannot serialize to an unspecified mime type.');
+    throw new Error('No destination mime type provided to Representor.');
   }
 
   // dispatch to requested representor
@@ -35,7 +39,11 @@ function processDoc(object, mimeType, root) {
       var uber = require('./representors/uber.js');
       doc = uber(object);
       break;
-    case "application/vnd.hal+json":
+    case "application/hal+json":
+      var hal = require('./representors/halv2.js');
+      doc = hal(object);
+      break;
+    case "application/vnd.hal+json": // legacy
       var haljson = require('./representors/haljson.js');
       doc = haljson(object, root);
       break;
@@ -59,7 +67,7 @@ function processDoc(object, mimeType, root) {
     **/  
       
     default:
-      throw new Error('Cannot serialize to an unsupported mime type: ' + mimeType);
+      throw new Error('Representor cannot serialize to an unsupported mime type: ' + mimeType);
   }
 
   return doc;

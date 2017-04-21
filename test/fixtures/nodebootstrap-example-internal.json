@@ -1,0 +1,38 @@
+{
+  "actions": [
+    {
+      "href": "http://localhost:5001/users",
+      "name": "self"
+    }
+  ],
+  "data": {
+    "count": 25,
+    "users": [
+      {
+        "email": "first@example.com",
+        "uuid": "5fc0a65e-c67a-4a15-811e-bd24e8e7ef5f",
+        "last_updated": "2017-04-18T01:30:58.000Z"
+      },
+      {
+        "email": "second@example.com",
+        "uuid": "229b673c-a2c5-4729-84eb-ff30d42ab133",
+        "last_updated": "2017-04-10T01:28:42.000Z"
+      },
+      {
+        "email": "kris@example.co",
+        "uuid": "1e687bca-b3b1-486d-a76d-9084a6d2cf37",
+        "last_updated": "2017-04-15T01:28:59.000Z"
+      },
+      {
+        "email": "jack@example.co.uk",
+        "uuid": "81f5ed2f-19a1-429a-b529-cfd7ee641b2e",
+        "last_updated": "2017-04-20T01:29:31.000Z"
+      },
+      {
+        "email": "molly@example.ca",
+        "uuid": "8ca73f19-dca5-4bfe-9d81-6e68fc0f4793",
+        "last_updated": "2017-04-20T01:30:45.000Z"
+      }
+    ]
+  }
+}
